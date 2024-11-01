@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Nature's Photography</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get form values
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const message = document.getElementById('message').value;
+
+            // Display the data as an alert or log to console
+            alert(`Submitted Data:\nEmail: ${email}\nName: ${name}\nAddress: ${address}\nMessage: ${message}`);
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Header section -->
+    <header id="contact-us">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you! Please fill out the form below to get in touch.</p>
+    </header>
+
+    <!-- Main contact section -->
+    <main class="contact-section">
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <form action="#" method="post" onsubmit="handleFormSubmit(event)">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter a valid email address" required>
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Enter your address">
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="gallery-footer">
+        <p>&copy; 2024 Nature's Photography. All rights reserved.</p>
+        <p>Follow us on 
+            <a href="#" style="color: #080808; text-decoration: underline;">Instagram</a>, 
+            <a href="#" style="color: #0c0b0b; text-decoration: underline;">Facebook</a>, 
+            <a href="#" style="color: #0c0c0c; text-decoration: underline;">Twitter</a>.
+        </p>
+    </footer>
+
+</body>
+</html>

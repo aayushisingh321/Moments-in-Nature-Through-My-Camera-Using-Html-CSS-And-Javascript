@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature's Photography</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="js/script.js"></script> -->
+
+</head>
+<body>
+    <div class="full-img" id="fullImgBox" style="display: none;">
+        <img src="Images/image1.jpeg" alt="" id="fullImg">
+        <div id="imageDescription" style="color: white; margin-top: 10px; display: none"></div>
+        <span onclick="closeFullImg()" style="cursor: pointer; color: white; font-size: 24px; position: absolute; top: 20px; right: 30px;">X</span>
+        
+
+    </div>
+    <header>
+        <h1 style="text-align: center; color: #0a0a0a;">Gallery</h1> <!-- Title added -->
+    </header>
+    <div class="img-gallery" >
+        <img src="Images/image1.jpeg" alt="" data-description="Flowers are the music of the ground. From earth’s lips, they speak." onclick="openFullImg(this.src , this.dataset.description)">
+        <img src="Images/image56.jpeg" alt="" data-description="Trees are the earth’s endless effort to speak to the listening heaven." onclick="openFullImg(this.src, this.dataset.description)">
+        <img src="Images/image14.jpeg" alt="" data-description="A flower does not think of competing with the flower next to it. It just blooms." onclick="openFullImg(this.src, this.dataset.description)">
+        <img src="Images/image5.jpeg" alt="" data-description="Happiness is to hold flowers in both hands." onclick="openFullImg(this.src , this.dataset.description)">
+        <img src="Images/image18.jpeg" alt="" data-description="Happiness is like a butterfly; the more you chase it, the more it will elude you. But if you turn your attention to other things, it comes and sits softly on your shoulder." onclick="openFullImg(this.src, this.dataset.description)">
+        <img src="Images/image21.jpeg" alt="" data-description="Every flower is a soul blossoming in nature." onclick="openFullImg(this.src , this.dataset.description)">
+        <img src="Images/image23.jpeg" alt="" data-description="Pink blooms are nature's way of saying, 'Life is beautiful and worth celebrating!" onclick="openFullImg(this.src , this.dataset.description)">
+        <img src="Images/image27.jpeg" alt="" data-description="The heavens declare the glory of God; the skies proclaim the work of his hands." onclick="openFullImg(this.src , this.dataset.description)">
+        <img src="Images/image80.jpeg" alt="" data-description="Butterflies are the magic of life, transforming from humble caterpillars to stunning creatures that captivate the heart." onclick="openFullImg(this.src , this.dataset.description)">
+        <img src="Images/image79.jpeg" alt="" data-description="The beauty of a rose lies not just in its petals but in the thorns that protect it." onclick="openFullImg(this.src , this.dataset.description)">
+        <img src="Images/image76.jpeg" alt="" data-description="In the garden of existence, butterflies are the flowers that remind us of change and transformation." onclick="openFullImg(this.src , this.dataset.description)">
+        <img src="Images/image73.jpeg" alt="" data-description="Pink flowers whisper sweet nothings to the soul, filling our hearts with joy." onclick="openFullImg(this.src , this.dataset.description)">
+        <img src="Images/image69.jpeg" alt="" data-description="Mountains teach that not everything in this world can be rationally explained." onclick="openFullImg(this.src , this.dataset.description)">
+        <img src="Images/image68.jpeg" alt="" data-description="The mountains have always been here, and they will continue to be here. They are the eternal guardians of our dreams." onclick="openFullImg(this.src , this.dataset.description)">
+        <img src="Images/image67.jpeg" alt="" data-description="Climb the mountains and get their good tidings." onclick="openFullImg(this.src, this.dataset.description)">
+        <img src="Images/image62.jpeg" alt="" data-description="Just like leaves in the wind, we are all part of nature’s dance." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image2.jpeg" alt="" data-description="Every sunset brings the promise of a new dawn, painted in shades of pink." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image44.jpeg" alt="" data-description="The roots of a tree anchor it, but it is the branches that reach for the sky." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image6.jpeg" alt="" data-description="Pink represents the sweetness of life and the joy of being alive." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image11.jpeg" alt="" data-description="The brightness of yellow plants reminds us that every day holds the potential for joy." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image12.jpeg" alt="" data-description="In every grain of sand, there lies a story of time and the beauty of nature." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image13.jpeg" alt="" data-description="Amidst the chaos, the green leaves remind us to stay grounded and grow." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image46.jpeg" alt="" data-description="The mountains have always been here, and they will continue to be here. They are the eternal guardians of our dreams." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image8.jpeg" alt="" data-description="A flower does not think of competing with the flower next to it. It just blooms." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image78.jpeg" alt="" data-description="Flowers are the poetry of the earth." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image64.jpeg" alt="" data-description="Look up at the sky. You'll never find rainbows if you're looking down." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image60.jpeg" alt="" data-description="It’s not the mountain we conquer, but ourselves." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image61.jpeg" alt="" data-description="Sunsets are a reminder that we can always find beauty in the endings." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image4.jpeg" alt="" data-description="Green mountains remind us that life thrives in the most challenging places."  onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image9.jpeg" alt="" data-description="Even the smallest creature has a place in the vastness of nature." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image20.jpeg" alt="" data-description="Every leaf speaks to me of love." onclick="openFullImg(this.src,this.dataset.description)">
+        <img src="Images/image24.jpeg" alt="" data-description="Like a fly resting on a leaf, sometimes we just need to take a moment to appreciate the view." onclick="openFullImg(this.src,this.dataset.description)">
+    </div>
+
+    <script>
+
+        var fullImgBox = document.getElementById("fullImgBox");
+        var fullImg = document.getElementById("fullImg");
+        var imageDescription = document.getElementById("imageDescription");
+
+    function openFullImg(pics , description){
+    fullImgBox.style.display = "flex";
+    fullImg.src = pics;
+    imageDescription.innerText = description; // Display the image description
+    imageDescription.style.display = "block"; // Show the description button
+     }
+
+     function closeFullImg() {
+    fullImgBox.style.display = "none"; // Hide the full image box
+    imageDescription.style.display = "none"; // Hide the description button
+     }
+    </script>
+
+    <footer id="gallery-footer">
+        <p>&copy; 2024 Nature's Photography. All rights reserved.</p>
+        <p>Follow us on 
+            <a href="#" style="color: #080808; text-decoration: underline;">Instagram</a>, 
+            <a href="#" style="color: #0c0b0b; text-decoration: underline;">Facebook</a>, 
+            <a href="#" style="color: #0c0c0c; text-decoration: underline;">Twitter</a>.
+        </p>
+    </footer>
+   
+    
+</body>
+</html>
