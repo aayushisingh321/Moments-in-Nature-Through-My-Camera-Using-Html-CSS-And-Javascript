@@ -1,0 +1,498 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+body{
+    background: #ecf4fb;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* overflow: hidden; Prevent scrollbars */
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+}
+
+
+/* Style for the background video */
+.video-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Send the video to the back */
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Cover the entire area */
+}
+
+
+/* Style for header and main content */
+header, main  {
+    position: relative;
+    z-index: 1; /* Bring content above the video */
+    color: white; /* Change text color for better visibility */
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 0; /* Reduced margin below the header */
+}
+
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline; /* Display menu items horizontally */
+    margin: 0 15px; /* Space between items */
+}
+
+nav ul li a {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+}
+
+h1 {
+    font-size: 3em; /* Large font size for title */
+    font-weight: bold; /* Make the title bold */
+}
+
+p {
+    font-size: 1.5em; /* Larger font size for paragraph */
+    font-weight: bold; /* Make the paragraph bold */
+}
+main {
+    padding-bottom: 200px;
+}
+
+.img-gallery {
+    /* margin-top: 0; */
+    padding: 0;
+    width: 80%;
+    margin: 100px auto 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four equal-width columns */
+    grid-gap: 30px; /* Space between images */
+    /* gap: 10px; */
+}
+
+.img-gallery img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Ensures a square shape */
+    object-fit: cover; /* Crops image to fill the square without distortion */
+    cursor: pointer;
+    
+}
+
+.img-gallery img {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+.img-gallery img:hover {
+    transform: scale(1.05); /* Slight zoom */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Increase shadow for depth */
+    border-radius: 10px; /* Keep the border radius for smooth corners */
+}
+
+.full-img{
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Ensure items stack vertically */
+    z-index: 100;
+}
+
+.full-img img {
+    width: 100%; /* Use full width of the container */
+    max-width: 500px; /* Maximum width constraint */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: add rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Optional: add subtle shadow for depth */
+}
+
+.full-img span{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.full-img img {
+    width: 500px; /* Set fixed width */
+    height: 600px; /* Set fixed height */
+    object-fit: cover; /* Maintain aspect ratio while cropping */
+    border-radius: 10px; /* Optional: add rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Optional: add subtle shadow for depth */
+}
+
+
+#imageDescription {
+    color: white; /* Set text color to black */
+    margin-top: 10px;
+    padding: 10px;
+    background-color: black; /* Set background color to white */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    display: none; /* Initially hidden, will be shown via JS */
+}
+
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+    .img-gallery {
+        grid-template-columns: repeat(3, 1fr); /* Three columns */
+    }
+}
+
+@media (max-width: 900px) {
+    .img-gallery {
+        grid-template-columns: repeat(2, 1fr); /* Two columns */
+    }
+}
+
+@media (max-width: 600px) {
+    .img-gallery {
+        grid-template-columns: 1fr; /* One column */
+    }
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.377);
+    padding: 10px 20px;
+    color: white;
+    text-align: center;
+    margin-top: auto; /* Push the footer to the bottom */
+}
+footer p {
+    font-size: 12px; /* Set the font size to smaller */
+    font-weight: normal; /* Ensure the font weight is not bold */
+    margin: 5px 0; /* Optional: add some spacing between paragraphs */
+}
+
+/* .img-gallery { */
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* gap: 10px; Space between images */
+/* } */
+
+/* .img-gallery img { */
+    /* width: 39%; Each image takes up half of the row */
+    /* height: 600px; Set desired height */
+    /* object-fit: cover; Crops image to fit dimensions */
+/* } */
+#gallery-footer {
+    background-color: #f2f2f2; /* Black background */
+    color: black; /* White text color */
+    text-align: center; /* Center the text */
+    padding: 1px 12px; /* Padding for spacing */
+    width: 100%; /* Full width of the viewport */
+    position: relative; /* Allow proper layout */
+    bottom: 0; /* Position at the bottom of the page */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+#gallery-footer p {
+    font-size: 14px; /* Smaller font size */
+    font-weight: normal; /* Regular weight for text */
+    margin: 5px 0; /* Margin for spacing */
+}
+
+#gallery-footer a {
+    color: #ffffff; /* White link color */
+    text-decoration: underline; /* Underline links */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+#gallery-footer a:hover {
+    color: #cccccc; /* Change link color on hover */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+    #gallery-footer {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    #gallery-footer p {
+        font-size: 12px; /* Smaller font size on mobile */
+    }
+}
+
+.social-link {
+    color: #ffffff; /* White link color for all social links */
+    text-decoration: underline; /* Underline links */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.social-link:hover {
+    color: #cccccc; /* Change link color on hover */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+/* Contact Section */
+.contact-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white; /* Set the background to white */
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Contact Form Styling */
+.contact-form {
+    background-color: white; /* Set form background to white */
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    border: 2px solid #010008; /* Blue border for form */
+}
+
+.contact-form form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    color: #01010a; /* Blue text for labels */
+}
+
+.contact-form form input,
+.contact-form form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #010008; /* Blue border for inputs */
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333; /* Dark text color for input */
+}
+
+.contact-form form button {
+    background-color: #1a06f7; /* Blue button */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.contact-form form button:hover {
+    background-color: #3005ca; /* Darker blue on hover */
+}
+
+#contact-us {
+    color: black; /* Set text color to black */
+}
+
+#contact-us h1,
+#contact-us p {
+    color: black; /* Ensures both the heading and paragraph are black */
+}
+
+/* Header styles */
+#about-me {
+    text-align: center; /* Center text */
+    padding: 0px;
+    color: rgb(8, 8, 8); /* White text for contrast */
+}
+
+/* Main about section styles */
+.about-section {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px; /* Limit width for readability */
+}
+
+.about-content {
+    background-color: #0c0101; /* Light background for content */
+    padding: 30px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Section headings */
+.about-content h2 {
+    color: #0a0a0a; /* Blue color for headings */
+    margin-top: 20px; /* Space above headings */
+}
+
+/* Paragraph styles */
+.about-content p {
+    line-height: 1.6; /* Line height for better readability */
+    margin-top: 10px; /* Space above paragraphs */
+}
+
+/* Header styles */
+#blog-header {
+    text-align: center; /* Center text */
+    padding: 20px;
+    /* background-color: #fafafc; Blue background for header */
+    color: rgb(10, 10, 10); /* White text for contrast */
+}
+
+/* Main blog section */
+.blog-section {
+    padding: 20px;
+    max-width: 800px; /* Limit width for readability */
+    margin: 0 auto; /* Center the blog section */
+}
+
+/* Blog post styles */
+.blog-post {
+    background-color: #f8f7f7; /* Light background for each post */
+    padding: 20px;
+    margin-bottom: 20px; /* Space between posts */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.post-title {
+    color: #030307; /* Blue color for post titles */
+    margin: 0; /* Remove default margin */
+}
+
+.post-date {
+    color: #777; /* Light gray for date */
+    font-size: 0.9em; /* Slightly smaller font size */
+}
+
+.post-image {
+    display: block; /* Ensures the image is displayed as a block */
+    margin: 15px auto; /* Center the image with margin */
+    max-width: 100%; /* Responsive: ensure the image doesn't exceed the container width */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 8px; /* Optional: rounded corners for the image */
+}
+
+.post-content {
+    line-height: 1.6; /* Line height for better readability */
+    color: rgb(1, 1, 10);
+}
+
+.read-more {
+    display: inline-block; /* Treat as a block for padding */
+    margin-top: 10px; /* Space above the link */
+    background-color: #1a06f7; /* Blue background for button */
+    color: white; /* White text for contrast */
+    padding: 10px 15px; /* Padding for button */
+    border-radius: 5px; /* Rounded corners for button */
+    text-decoration: none; /* Remove underline */
+    transition: background 0.3s ease; /* Smooth transition */
+}
+
+.read-more:hover {
+    background-color: #3005ca; /* Darker blue on hover */
+}
+
+/* Social Media Section Styles */
+#social-media {
+    display: flex; /* Enable flexbox for centering */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    text-align: center; /* Center text */
+    padding: 20px; /* Padding for spacing */
+    background-color: #f8f7f7; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    margin: 20px auto; /* Center section horizontally */
+    max-width: 600px; /* Limit width for readability */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+#social-media h2 {
+    margin-bottom: 10px; /* Space below heading */
+    color: #1a06f7; /* Blue color for heading */
+}
+
+#social-media p {
+    color: #555; /* Gray color for text */
+    margin-bottom: 15px; /* Space below paragraph */
+}
+
+/* Social Icons */
+.social-icons {
+    margin-top: 15px; /* Space above icons */
+    display: flex; /* Enable flexbox for icons */
+    justify-content: center; /* Center icons horizontally */
+}
+
+.social-icons a {
+    text-decoration: none; /* Remove underline */
+    color: #1a06f7; /* Icon color */
+    margin: 0 10px; /* Space between icons */
+    font-size: 24px; /* Icon size */
+    transition: color 0.3s, transform 0.3s; /* Smooth transition for color and scaling */
+}
+
+.social-icons a:hover {
+    color: #3005ca; /* Darker blue on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+
+/* Services Section Styles */
+#services {
+    padding: 20px; /* Padding for spacing */
+    text-align: center; /* Center text */
+    background-color: #f0f0f0; /* Light gray background */
+    border-radius: 8px; /* Rounded corners */
+    margin: 20px auto; /* Center section horizontally */
+    max-width: 600px; /* Limit width for readability */
+}
+
+#services h2 {
+    color: #1a06f7; /* Blue color for heading */
+}
+
+/* Testimonials Section Styles */
+#testimonials {
+    padding: 20px; /* Padding for spacing */
+    text-align: center; /* Center text */
+    background-color: #e8e8e8; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    margin: 20px auto; /* Center section horizontally */
+    max-width: 600px; /* Limit width for readability */
+}
+
+#testimonials h2 {
+    color: #1a06f7; /* Blue color for heading */
+}
+
+blockquote {
+    font-style: italic; /* Italicize the testimonial text */
+    margin: 15px 0; /* Space above and below blockquotes */
+}
+
+cite {
+    display: block; /* Display citation as block element */
+    margin-top: 5px; /* Space above citation */
+    color: #555; /* Gray color for citation */
+}
+
+/* Header Styles */
+#home-header h1,
+#home-header p {
+    color: black; /* Set text color to black */
+}
